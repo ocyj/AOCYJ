@@ -23,6 +23,7 @@ namespace Common.Test.Utilities.Test
         [TestCase(9999, 9, 9, 9, 9)]
         [TestCase(999, 0, 9, 9, 9)]
         [TestCase(99, 0, 0, 9, 9)]
+        [TestCase(9, 0, 0, 0, 9)]
         public void ReturnCorrectValuesForInputsLessThan9999(int input, int thousands, int hundreds, int tens, int ones)
         {
             var (Thousands, Hundreds, Tens, Ones) = input.ExtractThousandsHundredsTensAndOnes();
