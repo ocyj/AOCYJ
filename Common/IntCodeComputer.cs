@@ -6,7 +6,16 @@ namespace Common
     public class IntCodeComputer
     {
         private enum ParameterMode { Positional = 0, Immediate = 1 };
-        private enum Operation { ADD = 1, MULT = 2, IN = 3, OUT = 4, STOP = 99 };
+        private enum Operation
+        {
+            ADD = 1,
+            MULT = 2,
+            IN = 3,
+            OUT = 4,
+            LESS_THAN = 7,
+            EQUALS = 8,
+            STOP = 99
+        };
 
         readonly int[] _memory;
         int _programCounter;
@@ -32,12 +41,17 @@ namespace Common
                     break;
 
                 var (param1, param2) = LoadParameters();
-                if (operation == Operation.ADD || operation == Operation.MULT)
+                if (operation == Operation.ADD ||
+                    operation == Operation.MULT ||
+                    operation == Operation.LESS_THAN ||
+                    operation==Operation.EQUALS)
                 {
                     Func<int, int, int> op = operation switch
                     {
                         Operation.ADD => (a, b) => a + b,
                         Operation.MULT => (a, b) => a * b,
+                        Operation.EQUALS => (a, b) => a == b ? 1 : 0,
+                        Operation.LESS_THAN => (a, b) => a  < b ? 1 : 0,
                         _ => throw new MagicSmokeException(),
                     };
 
@@ -55,7 +69,6 @@ namespace Common
                     WriteOutput(param1());
                     _programCounter += 2;
                 }
-
             }
             return MemoryDump;
         }

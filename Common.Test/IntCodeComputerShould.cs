@@ -145,6 +145,95 @@ namespace Common.Test
             Assert.That(value, Is.EqualTo(actualOutput));
         }
 
+        [TestCase(7, 0)]
+        [TestCase(8, 1)]
+        [TestCase(9, 0)]
+        public void ImplementOpCode8AsEqualsWithPositionalMode(int input, int expectedOutput)
+        {
+            // Arrange
+            var program = new[] { 3, 9, 8, 9, 10, 9, 4, 9, 99, -1, 8 };
+            int actualOutput = int.MinValue;
+            var computer = new IntCodeComputer(program)
+            {
+                ReadInput = () => input,
+                WriteOutput = v => actualOutput = v
+            };
+
+            // Act
+            computer.RunToCompletion();
+
+            // Assert
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
+        }
+
+        [TestCase(7, 0)]
+        [TestCase(8, 1)]
+        [TestCase(9, 0)]
+        public void ImplementOpCode8AsEqualsAndUseImmediateMode(int input, int expectedOutput)
+        {
+            // Arrange
+            var program = new[] { 3, 3, 1108, -1, 8, 3, 4, 3, 99 };
+            int actualOutput = int.MinValue;
+            var computer = new IntCodeComputer(program)
+            {
+                ReadInput = () => input,
+                WriteOutput = v => actualOutput = v
+            };
+
+            // Act
+            computer.RunToCompletion();
+
+            // Assert
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
+        }
+
+        [TestCase(6, 1)]
+        [TestCase(7, 1)]
+        [TestCase(8, 0)]
+        [TestCase(9, 0)]
+        public void ImplementOpCode7AsLessThanAndUsePositionalMode(int input, int expectedOutput)
+        {
+            // Arrange
+            var program = new[] { 3, 9, 7, 9, 10, 9, 4, 9, 99, -1, 8 };
+            int actualOutput = int.MinValue;
+            var computer = new IntCodeComputer(program)
+            {
+                ReadInput = () => input,
+                WriteOutput = v => actualOutput = v
+            };
+
+            // Act
+            computer.RunToCompletion();
+
+            // Assert
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
+
+        }
+
+
+        [TestCase(6, 1)]
+        [TestCase(7, 1)]
+        [TestCase(8, 0)]
+        [TestCase(9, 0)]
+        public void ImplementOpCode7AsLessThanAndUseImmediateMode(int input, int expectedOutput)
+        {
+            // Arrange
+            var program = new[] { 3,3,1107,-1,8,3,4,3,99 };
+
+            int actualOutput = int.MinValue;
+            var computer = new IntCodeComputer(program)
+            {
+                ReadInput = () => input,
+                WriteOutput = v => actualOutput = v
+            };
+
+            // Act
+            computer.RunToCompletion();
+
+            // Assert
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
+
+        }
 
     }
 }
