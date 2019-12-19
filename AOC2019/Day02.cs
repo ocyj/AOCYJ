@@ -23,7 +23,7 @@ namespace AOC2019
             _parsedInput.CopyTo(memoryState, 0);
             memoryState[1] = 12;
             memoryState[2] = 2;
-            var computer = new IntCodeComputer(memoryState);
+            var computer = new D02.IntCodeComputer(memoryState);
             return computer.RunToEnd()[0];
         }
 
@@ -38,7 +38,7 @@ namespace AOC2019
                     _parsedInput.CopyTo(memoryState, 0);
                     memoryState[1] = noun;
                     memoryState[2] = verb;
-                    var computer = new IntCodeComputer(memoryState);
+                    var computer = new D02.IntCodeComputer(memoryState);
                     int result = computer.RunToEnd()[0];
                     if (magicNumber == result)
                     {
