@@ -28,9 +28,12 @@ namespace Common
             while (true)
             {
                 var operation = ReadOperation();
+                if (operation == Operation.STOP)
+                    break;
+
+                var (param1, param2) = LoadParameters();
                 if (operation == Operation.ADD || operation == Operation.MULT)
                 {
-                    var (param1, param2) = LoadParameters();
                     Func<int, int, int> op = operation switch
                     {
                         Operation.ADD => (a, b) => a + b,
@@ -49,13 +52,10 @@ namespace Common
                 }
                 else if (operation == Operation.OUT)
                 {
-                    WriteOutput(_memory[_memory[_programCounter + 1]]);
+                    WriteOutput(param1());
                     _programCounter += 2;
                 }
-                else if (operation == Operation.STOP)
-                {
-                    break;
-                }
+
             }
             return MemoryDump;
         }

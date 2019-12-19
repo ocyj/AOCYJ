@@ -105,6 +105,25 @@ namespace Common.Test
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
         }
 
+        [TestCase(new int[] { 4, 3, 99, 800 }, 800)]
+        [TestCase(new int[] { 104, 3, 99, 800 }, 3)]
+        public void UnderstandParameterModeForOutputsAsWell(int[] memory, int expectedOutput)
+        {
+            // Arrange
+            int actualOutput = 0;
+            var computer = new IntCodeComputer(memory)
+            {
+                WriteOutput = v => actualOutput = v
+            };
+
+            // Act
+            computer.RunToCompletion();
+
+            // Assert
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
+        }
+
+
         [TestCase(0)]
         [TestCase(-1)]
         [TestCase(10000)]
@@ -124,9 +143,8 @@ namespace Common.Test
 
             // Assert
             Assert.That(value, Is.EqualTo(actualOutput));
-
-
         }
+
 
     }
 }

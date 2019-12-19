@@ -21,7 +21,15 @@ namespace AOC2019
             };
             computer.RunToCompletion();
 
-            return $"Computer output = {outputs[^1]}";
+            bool noErrors = true;
+            foreach(var output in outputs.SkipLast(1))
+            {
+                noErrors &= output == 0;
+            }
+
+            string errors = noErrors ? "no errors!" : "errors!";
+
+            return $"Computer output: {outputs[^1]} with {errors}";
         }
 
         public override object SolvePart2()
