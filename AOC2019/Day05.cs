@@ -1,4 +1,6 @@
 ﻿using Common;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AOC2019
 {
@@ -10,7 +12,16 @@ namespace AOC2019
 
         public override object SolvePart1()
         {
-            return "";
+            var memory = Input[0].Split(',').Select(s => int.Parse(s.Trim())).ToArray();
+            var outputs = new List<int>();
+            var computer = new IntCodeComputer(memory)
+            {
+                ReadInput = () => 1,
+                WriteOutput = v => outputs.Add(v)
+            };
+            computer.RunToCompletion();
+
+            return $"Computer output = {outputs[^1]}";
         }
 
         public override object SolvePart2()
