@@ -12,6 +12,8 @@ namespace Common
             MULT = 2,
             IN = 3,
             OUT = 4,
+            JUMP_IF_TRUE = 5,
+            JUMP_IF_FALSE = 6,
             LESS_THAN = 7,
             EQUALS = 8,
             STOP = 99
@@ -44,20 +46,35 @@ namespace Common
                 if (operation == Operation.ADD ||
                     operation == Operation.MULT ||
                     operation == Operation.LESS_THAN ||
-                    operation==Operation.EQUALS)
+                    operation == Operation.EQUALS)
                 {
                     Func<int, int, int> op = operation switch
                     {
                         Operation.ADD => (a, b) => a + b,
                         Operation.MULT => (a, b) => a * b,
                         Operation.EQUALS => (a, b) => a == b ? 1 : 0,
-                        Operation.LESS_THAN => (a, b) => a  < b ? 1 : 0,
+                        Operation.LESS_THAN => (a, b) => a < b ? 1 : 0,
                         _ => throw new MagicSmokeException(),
                     };
 
                     void result(int r) => _memory[_memory[_programCounter + 3]] = r;
                     result(op(param1(), param2()));
                     _programCounter += 4;
+                }
+                else if (operation == Operation.JUMP_IF_TRUE ||
+                         operation == Operation.JUMP_IF_FALSE)
+                {
+                    Predicate<int> shouldJump = operation switch
+                    {
+                        Operation.JUMP_IF_TRUE => i => i != 0,
+                        Operation.JUMP_IF_FALSE => i => i == 0,
+                        _ => throw new MagicSmokeException()
+                    };
+
+                    if (shouldJump(param1()))
+                        _programCounter = param2();
+                    else
+                        _programCounter += 3;
                 }
                 else if (operation == Operation.IN)
                 {
