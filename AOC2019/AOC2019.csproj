@@ -34,6 +34,10 @@
     <Content Include="input\input06.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="input\input07.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   </ItemGroup>
 
   <ItemGroup>
