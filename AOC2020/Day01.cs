@@ -26,7 +26,7 @@ namespace AOC2020
 
         public override object SolvePart2()
         {
-            _allPairs.Where()
+            throw new NotImplementedException();
         }
     }
 }

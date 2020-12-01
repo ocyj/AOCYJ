@@ -16,10 +16,27 @@ namespace Common
         {
             Console.WriteLine($" Day {Date:D2} - {Name.ToUpper()} ");
             Console.WriteLine();
+
             Console.Write($"\tPart 1 answer:");
-            Console.WriteLine($"\t{SolvePart1().ToString()}");
+            try
+            {
+                Console.WriteLine($"\t{SolvePart1()}");
+            }
+            catch (NotImplementedException)
+            {
+                Console.WriteLine($"\tNOT SOLVED YET!");
+            }
+
             Console.Write($"\tPart 2 answer:");
-            Console.WriteLine($"\t{SolvePart2().ToString()}");
+            try
+            {
+                Console.WriteLine($"\t{SolvePart2()}");
+            }
+            catch (NotImplementedException)
+            {
+                Console.WriteLine($"\tNOT SOLVED YET!");
+            }
+
             Console.WriteLine("=============================================");
         }
         public abstract object SolvePart1();

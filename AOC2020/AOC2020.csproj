@@ -19,4 +19,6 @@
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
+  <Import Project="..\CommonShared\CommonShared.projitems" Label="Shared" />
+
 </Project>

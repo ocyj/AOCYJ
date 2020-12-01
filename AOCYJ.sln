@@ -14,9 +14,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Test", "Common.Test\Common.Test.csproj", "{BF6C1DDC-4A09-4F93-8EB5-62B3E40B6623}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC2020", "AOC2020\AOC2020.csproj", "{069FC77F-5FFD-4D50-BCBD-95B0D13A362D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AOC2020", "AOC2020\AOC2020.csproj", "{069FC77F-5FFD-4D50-BCBD-95B0D13A362D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonShared", "CommonShared\CommonShared.shproj", "{10F0BC8D-1987-483C-A9DF-B9E0FAF174AD}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CommonShared\CommonShared.projitems*{069fc77f-5ffd-4d50-bcbd-95b0d13a362d}*SharedItemsImports = 5
+		CommonShared\CommonShared.projitems*{10f0bc8d-1987-483c-a9df-b9e0faf174ad}*SharedItemsImports = 13
+		CommonShared\CommonShared.projitems*{efa9fc3a-12cd-4e6c-8a77-201388921ad2}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

@@ -9,19 +9,7 @@ namespace AOC2019
     {
         static void Main(string[] args)
         {
-            Console.WriteLine();
-            var dayTypes = Assembly.GetExecutingAssembly().GetTypes()
-                                   .Where(t => t.BaseType == typeof(Day));
-            foreach (var dayType in dayTypes)
-            {
-                Day day = (Day)Activator.CreateInstance(dayType);
-                day.Solve();
-            }
-            Other();
-        }
-
-        private static void Other()
-        {
+            Solver.Solve();
         }
     }
 }
