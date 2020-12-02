@@ -6,6 +6,10 @@ namespace Common
 {
     public static class Extensions
     {
+        public static int CountChar(this string s, char c)
+        {
+            return s.Split(c).Length - 1;
+        }
         public static IEnumerable<Pair<T>> Pairs<T>(this IReadOnlyList<T> inputSequence)
         {
             for (int i = 0; i < inputSequence.Count - 1; i++)

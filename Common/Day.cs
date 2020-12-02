@@ -11,6 +11,7 @@ namespace Common
         public Day()
         {
             Input = File.ReadAllLines($@"input\input{Date:D2}.txt");
+            Prepare();
         }
         public void Solve()
         {
@@ -41,5 +42,7 @@ namespace Common
         }
         public abstract object SolvePart1();
         public abstract object SolvePart2();
+
+        public virtual void Prepare() { }
     }
 }
