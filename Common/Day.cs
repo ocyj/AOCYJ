@@ -5,12 +5,15 @@ namespace Common
 {
     public abstract class Day
     {
-        public string[] Input { get; }
+        private string[] _input;
+        public string[] Input => UseTestInput ? TestInput : _input;
+        public bool UseTestInput { get; set; } = false; 
+        public string[] TestInput { private get; set; }
         public abstract int Date { get; }
         public abstract string Name { get; }
         public Day()
         {
-            Input = File.ReadAllLines($@"input\input{Date:D2}.txt");
+            _input = File.ReadAllLines($@"input\input{Date:D2}.txt");
             Prepare();
         }
         public void Solve()
