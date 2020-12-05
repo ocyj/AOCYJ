@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Common
 {
     [Serializable]
-    internal class MagicSmokeException : Exception
+    public class MagicSmokeException : Exception
     {
         public MagicSmokeException()
         {
