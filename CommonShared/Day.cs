@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Common
+namespace CommonShared
 {
     public abstract class Day
     {
@@ -46,6 +46,6 @@ namespace Common
         public abstract object SolvePart1();
         public abstract object SolvePart2();
 
-        public virtual void Prepare() { }
+        internal virtual void Prepare() { }
     }
 }

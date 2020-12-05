@@ -1,9 +1,10 @@
-﻿using Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
+using CommonShared;
 
 namespace AOC2020
 {
@@ -66,7 +67,7 @@ namespace AOC2020
         private static bool ValidatePid(string value) =>
             value.Length == 9 && value.OnlyDecimalDigits();
 
-        public override void Prepare()
+        internal override void Prepare()
         {
             Passports = new List<Dictionary<string, string>>();
             var currentRecord = new Dictionary<string, string>();

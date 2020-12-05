@@ -1,6 +1,5 @@
-﻿using Common;
-using System;
-using System.Linq;
+﻿using System;
+using CommonShared;
 
 namespace AOC2020
 {

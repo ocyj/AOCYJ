@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using CommonShared;
 
 namespace AOC2020
 {

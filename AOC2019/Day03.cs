@@ -1,7 +1,8 @@
-﻿using Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Common;
+using CommonShared;
 
 namespace AOC2019
 {

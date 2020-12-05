@@ -1,6 +1,5 @@
-﻿using AOC2019.D02;
-using Common;
-using System.Linq;
+﻿using System.Linq;
+using CommonShared;
 
 namespace AOC2019
 {

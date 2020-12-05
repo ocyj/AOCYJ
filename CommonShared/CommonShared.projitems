@@ -9,6 +9,7 @@
     <Import_RootNamespace>CommonShared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Day.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Solver.cs" />
   </ItemGroup>
 </Project>

@@ -1,9 +1,8 @@
-﻿using Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Common;
+using CommonShared;
 
 namespace AOC2020
 {
@@ -26,7 +25,7 @@ namespace AOC2020
                                                 ^ p.password[p.max - 1] == p.@char);
         }
 
-        public override void Prepare()
+        internal override void Prepare()
         {
             passwordAndPolicies = new List<(int min, int max, char @char, string password)>();
 
