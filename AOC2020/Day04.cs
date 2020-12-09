@@ -70,23 +70,17 @@ namespace AOC2020
         internal override void Prepare()
         {
             Passports = new List<Dictionary<string, string>>();
-            var currentRecord = new Dictionary<string, string>();
-            foreach (var line in Input)
+            Dictionary<string, string> currentRecord;
+            foreach (var group in InputGroups)
             {
-                if (string.IsNullOrWhiteSpace(line))
+                currentRecord = new Dictionary<string, string>();
+                foreach (var field in string.Join(' ', group).Split(' '))
                 {
-                    Passports.Add(currentRecord);
-                    currentRecord = new Dictionary<string, string>();
-                    continue;
+                    var keyValuePair = field.Split(':');
+                    currentRecord[keyValuePair[0]] = keyValuePair[1];
                 }
-                foreach (var part in line.Split(' '))
-                {
-                    var keyValue = part.Split(':');
-                    currentRecord[keyValue[0]] = keyValue[1];
-                }
+                Passports.Add(currentRecord);
             }
-            // Also add last passport
-            Passports.Add(currentRecord);
         }
     }
 }

@@ -15,15 +15,7 @@ namespace CommonShared
                                    .Where(t => t.BaseType == typeof(Day));
             foreach (var dayType in dayTypes)
             {
-                if (dayType.GetCustomAttribute(typeof(ParseInputGroupAttribute)) != null)
-                {
-                    Day day = (Day)Activator.CreateInstance(dayType, new[] { true });
-
-                }
-                else
-                {
-                    Day day = (Day)Activator.CreateInstance(dayType);
-                }
+                Day day = (Day)Activator.CreateInstance(dayType);
                 day.Solve();
             }
         }

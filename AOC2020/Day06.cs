@@ -9,7 +9,6 @@ namespace AOC2020
 {
     public class Day06 : Day
     {
-        private List<List<string>> InputGroups;
 
         public override int Date => 6;
 
@@ -24,25 +23,6 @@ namespace AOC2020
               group.Select(s => s.ToCharArray())
               .Aggregate(Enumerable.Range('a', 'a' + 'z' + 1).Select(i => (char)i),
                          (prev, next) => prev.Intersect(next), last => last.Count()));
-        }
-
-        internal override void Prepare()
-        {
-            InputGroups = new List<List<string>>();
-            var currentGroup = new List<string>();
-            foreach (var line in Input)
-            {
-                if (string.IsNullOrWhiteSpace(line))
-                {
-                    InputGroups.Add(currentGroup);
-                    currentGroup = new List<string>();
-                    continue;
-                }
-                currentGroup.Add(line);
-            }
-
-            // Also add last inputGroup
-            InputGroups.Add(currentGroup);
         }
     }
 }
