@@ -48,6 +48,23 @@ namespace Common
         {
             return s.Split(c).Length - 1;
         }
+
+        public static IEnumerable<IEnumerable<T>> ContiguousRanges<T>(this IReadOnlyList<T> inputSequence, int rangeLength = 2)
+        {
+            // Count of ranges = inputSequence.Count - rangeLenght + 1
+            int lastStartIdx = inputSequence.Count - rangeLength;
+            List<T> returnList;
+            for (int currentStartIdx = 0; currentStartIdx <= lastStartIdx; currentStartIdx++)
+            {
+                returnList = new List<T>(rangeLength);
+                for (int i = currentStartIdx; i < currentStartIdx + rangeLength; i++)
+                {
+                    returnList.Add(inputSequence[i]);
+                }
+                yield return returnList;
+            }
+        }
+
         public static IEnumerable<Pair<T>> Pairs<T>(this IReadOnlyList<T> inputSequence)
         {
             for (int i = 0; i < inputSequence.Count - 1; i++)
