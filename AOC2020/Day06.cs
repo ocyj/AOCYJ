@@ -9,42 +9,40 @@ namespace AOC2020
 {
     public class Day06 : Day
     {
-        private List<HashSet<char>> CustomForms;
+        private List<List<string>> InputGroups;
 
         public override int Date => 6;
 
         public override string Name => "Custom Customs";
 
-        public override object SolvePart1() => CustomForms.Sum(cf => cf.Count);
+        public override object SolvePart1() =>
+            InputGroups.Select(l => l.SelectMany(c => c).Distinct()).Sum(s => s.Count());
 
         public override object SolvePart2()
         {
-            throw new NotImplementedException();
+            return InputGroups.Sum(group =>
+              group.Select(s => s.ToCharArray())
+              .Aggregate(Enumerable.Range('a', 'a' + 'z' + 1).Select(i => (char)i),
+                         (prev, next) => prev.Intersect(next), last => last.Count()));
         }
 
         internal override void Prepare()
         {
-            UseTestInput = true;
+            InputGroups = new List<List<string>>();
+            var currentGroup = new List<string>();
+            foreach (var line in Input)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    InputGroups.Add(currentGroup);
+                    currentGroup = new List<string>();
+                    continue;
+                }
+                currentGroup.Add(line);
+            }
 
-            TestInput = @"abc
-
-a
-b
-c
-
-ab
-ac
-
-a
-a
-a
-a
-
-b".Split(Environment.NewLine);
-
-
-         
-
+            // Also add last inputGroup
+            InputGroups.Add(currentGroup);
         }
     }
 }
