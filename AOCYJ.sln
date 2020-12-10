@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AOC2020", "AOC2020\AOC2020.
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonShared", "CommonShared\CommonShared.shproj", "{10F0BC8D-1987-483C-A9DF-B9E0FAF174AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCodeRunner", "AdventOfCodeRunner\AdventOfCodeRunner.csproj", "{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		CommonShared\CommonShared.projitems*{069fc77f-5ffd-4d50-bcbd-95b0d13a362d}*SharedItemsImports = 5
@@ -45,6 +47,10 @@ Global
 		{069FC77F-5FFD-4D50-BCBD-95B0D13A362D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{069FC77F-5FFD-4D50-BCBD-95B0D13A362D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{069FC77F-5FFD-4D50-BCBD-95B0D13A362D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

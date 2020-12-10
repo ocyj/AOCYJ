@@ -6,7 +6,6 @@ namespace AOC2020
     {
         static void Main(string[] args)
         {
-            Solver.Solve();
         }
     }
 }
