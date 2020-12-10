@@ -6,44 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="input\input01.txt" />
-    <None Remove="input\input02.txt" />
-    <None Remove="input\input03.txt" />
-    <None Remove="input\input04.txt" />
-    <None Remove="input\input05.txt" />
-    <None Remove="input\input06.txt" />
-    <None Remove="input\input08.txt" />
-    <None Remove="input\input09.txt" />
+    <Content Remove="input/input*.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="input\input02.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="input\input01.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\input03.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\input04.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\input05.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\input06.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\input08.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\input09.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="input/input*.txt" />
   </ItemGroup>
 
   <ItemGroup>

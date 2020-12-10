@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace CommonShared
 {
@@ -38,7 +39,13 @@ namespace CommonShared
 
         public Day()
         {
-            _input = File.ReadAllLines($@"input\input{Date:D2}.txt");
+            // Do this once for entire assembly? Use line below to get all resource names
+            //string[] names = assembly.GetManifestResourceNames();
+            Stream resourceStream = Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream($"AOC2020.input.input{Date:D2}.txt");
+            var StreamReader = new StreamReader(resourceStream);
+
+            _input = StreamReader.ReadToEnd().Trim().Split(Environment.NewLine);
             Prepare();
         }
 
