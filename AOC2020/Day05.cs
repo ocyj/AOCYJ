@@ -9,7 +9,7 @@ using CommonShared;
 
 namespace AOC2020
 {
-    public class Day05 : Day
+    public class Day05 : DayOf2020
     {
         public override int Date => 5;
 

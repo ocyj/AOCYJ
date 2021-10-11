@@ -5,7 +5,7 @@ using CommonShared;
 
 namespace AOC2019
 {
-    class Day05 : Day
+    class Day05 : DayOf2019
     {
         public override int Date => 5;
 

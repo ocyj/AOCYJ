@@ -1,4 +1,5 @@
 ﻿using CommonShared;
+using AOC2019;
 
 namespace AdventOfCodeRunner
 {
@@ -6,7 +7,8 @@ namespace AdventOfCodeRunner
     {
         static void Main(string[] args)
         {
-            Solver.Solve();
+            new AOC2019.Day03().Solve();
+            //Solver.Solve();
         }
     }
 }

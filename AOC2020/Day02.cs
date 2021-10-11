@@ -6,7 +6,7 @@ using CommonShared;
 
 namespace AOC2020
 {
-    public class Day02 : Day
+    public class Day02 : DayOf2020
     {
         private List<(int min, int max, char @char, string password)> passwordAndPolicies;
         public override int Date => 2;

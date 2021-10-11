@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AOC2020
 {
-    public class Day06 : Day
+    public class Day06 : DayOf2020
     {
 
         public override int Date => 6;

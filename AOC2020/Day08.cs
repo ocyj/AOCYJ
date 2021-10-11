@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AOC2020
 {
-    public class Day08 : Day
+    public class Day08 : DayOf2020
     {
         private List<int> SwapableIndices;
         private Func<int, string> InputSwapper(int swapNth)

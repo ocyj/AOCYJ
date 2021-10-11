@@ -7,7 +7,7 @@ using CommonShared;
 
 namespace AOC2019
 {
-    class Day06 : Day
+    class Day06 : DayOf2019
     {
         private Dictionary<string, SpaceObject> spaceObjects;
 

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AOC2020
 {
-    public class Day09 : Day
+    public class Day09 : DayOf2020
     {
         private long FirstInvalidNumber;
         private List<long> InputNumbers;

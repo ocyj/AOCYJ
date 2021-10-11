@@ -8,7 +8,7 @@ using CommonShared;
 
 namespace AOC2020
 {
-    public class Day04 : Day
+    public class Day04 : DayOf2020
     {
         private List<Dictionary<string, string>> Passports;
         public override int Date => 4;

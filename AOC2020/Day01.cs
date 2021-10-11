@@ -6,7 +6,7 @@ using CommonShared;
 
 namespace AOC2020
 {
-    class Day01 : Day
+    class Day01 : DayOf2020
     {
         private int[] _parsedInput;
         private IEnumerable<Pair<int>> _allPairs;
