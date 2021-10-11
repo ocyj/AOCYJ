@@ -15,13 +15,6 @@ namespace AOC2019
 
         public override string Name => "Amplification Circuit";
 
-        private readonly Queue<int> computerIO;
-
-        public Day07()
-        {
-            computerIO = new Queue<int>();
-        }
-
         public override object SolvePart1()
         {
             int[] program = Input[0].Split(',').Select(s => int.Parse(s)).ToArray();
