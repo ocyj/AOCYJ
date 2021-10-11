@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Common;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using AOC2019.D06;
-using Common;
-using CommonShared;
 
 namespace AOC2019
 {
@@ -14,13 +9,6 @@ namespace AOC2019
         public override int Date => 7;
 
         public override string Name => "Amplification Circuit";
-
-        private readonly Queue<int> computerIO;
-
-        public Day07()
-        {
-            computerIO = new Queue<int>();
-        }
 
         public override object SolvePart1()
         {
@@ -62,7 +50,6 @@ namespace AOC2019
                 var cnxDE = new Connection(permutatation[4]);
                 computerD.WriteOutput = cnxDE.WriteValue;
                 computerE.ReadInput = cnxDE.ReadValue;
-
 
                 int thrusterSignal = int.MinValue;
                 computerE.WriteOutput = (output) => thrusterSignal = output;
