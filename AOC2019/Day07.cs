@@ -36,10 +36,16 @@ namespace AOC2019
                 var computerD = new IntCodeComputer(program);
                 var computerE = new IntCodeComputer(program);
 
-                // hack using the same connection for computerA's
-                // first input and computerE's last output...
-                var cnxEA = new Connection(permutatation[0]);
-                computerA.ReadInput = cnxEA.ReadValue;
+                bool first = true;
+                computerA.ReadInput = () =>
+                {
+                    if (first)
+                    {
+                        first = false;
+                        return Task.FromResult(permutatation[0]);
+                    }
+                    else return Task.FromResult(0);
+                };
 
                 var cnxAB = new Connection(permutatation[1]);
                 computerA.WriteOutput = cnxAB.WriteValue;
@@ -54,11 +60,12 @@ namespace AOC2019
                 computerD.ReadInput = cnxCD.ReadValue;
 
                 var cnxDE = new Connection(permutatation[4]);
-                computerE.WriteOutput = cnxDE.WriteValue;
+                computerD.WriteOutput = cnxDE.WriteValue;
                 computerE.ReadInput = cnxDE.ReadValue;
 
 
-                computerE.WriteOutput = cnxEA.WriteValue;
+                int thrusterSignal = int.MinValue;
+                computerE.WriteOutput = (output) => thrusterSignal = output;
 
                 var taskA = computerA.RunToCompletion();
                 var taskB = computerB.RunToCompletion();
@@ -68,11 +75,9 @@ namespace AOC2019
 
                 Task.WhenAll(taskA, taskB, taskC, taskD, taskE);
 
-                // This is the last value to be written by computerE:
-                int output = cnxEA.Value;
-                if (output > maxOutput)
+                if (thrusterSignal > maxOutput)
                 {
-                    maxOutput = output;
+                    maxOutput = thrusterSignal;
                     phaseSettingsMax = permutatation;
                 }
             }
