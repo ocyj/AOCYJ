@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Common;
 using CommonShared;
 
 namespace AOC2019
 {
-    class Day05 : DayOf2019
+    public class Day05 : DayOf2019
     {
         public override int Date => 5;
 
@@ -17,7 +18,7 @@ namespace AOC2019
             var outputs = new List<int>();
             var computer = new IntCodeComputer(memory)
             {
-                ReadInput = () => 1,
+                ReadInput = () => Task.FromResult(1),
                 WriteOutput = v => outputs.Add(v)
             };
             computer.RunToCompletion();
@@ -39,7 +40,7 @@ namespace AOC2019
             var outputs = new List<int>();
             var computer = new IntCodeComputer(memory)
             {
-                ReadInput = () => 5,
+                ReadInput = () => Task.FromResult(5),
                 WriteOutput = v => outputs.Add(v)
             };
             computer.RunToCompletion();

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Common
 {
@@ -21,7 +22,7 @@ namespace Common
 
         readonly int[] _memory;
         int _programCounter;
-        public Func<int> ReadInput { get; set; }
+        public Func<Task<int>> ReadInput { get; set; }
         public Action<int> WriteOutput { get; set; }
 
         public IntCodeComputer(int[] memory)
@@ -34,7 +35,7 @@ namespace Common
 
         public int[] MemoryDump => (int[])_memory.Clone();
 
-        public int[] RunToCompletion()
+        public async Task<int[]> RunToCompletion()
         {
             while (true)
             {
@@ -78,7 +79,7 @@ namespace Common
                 }
                 else if (operation == Operation.IN)
                 {
-                    _memory[_memory[_programCounter + 1]] = ReadInput();
+                    _memory[_memory[_programCounter + 1]] = await ReadInput();
                     _programCounter += 2;
                 }
                 else if (operation == Operation.OUT)
