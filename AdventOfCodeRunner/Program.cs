@@ -8,7 +8,7 @@ namespace AdventOfCodeRunner
         static void Main(string[] args)
         {
 
-            new AOC2019.Day07().Solve();
+            new AOC2021.Day02().Solve();
             //Solver.Solve();
         }
     }

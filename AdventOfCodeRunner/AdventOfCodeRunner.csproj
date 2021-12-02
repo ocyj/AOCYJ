@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AOC2019\AOC2019.csproj" />
     <ProjectReference Include="..\AOC2020\AOC2020.csproj" />
+    <ProjectReference Include="..\AOC2021\AOC2021.csproj" />
   </ItemGroup>
 
 </Project>

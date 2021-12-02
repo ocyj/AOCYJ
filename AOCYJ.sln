@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.87
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AOC2019", "AOC2019\AOC2019.csproj", "{EFA9FC3A-12CD-4E6C-8A77-201388921AD2}"
 EndProject
@@ -18,12 +18,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AOC2020", "AOC2020\AOC2020.
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonShared", "CommonShared\CommonShared.shproj", "{10F0BC8D-1987-483C-A9DF-B9E0FAF174AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCodeRunner", "AdventOfCodeRunner\AdventOfCodeRunner.csproj", "{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCodeRunner", "AdventOfCodeRunner\AdventOfCodeRunner.csproj", "{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC2021", "AOC2021\AOC2021.csproj", "{C19F43C9-9557-424B-B9E7-50C21E1550CE}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		CommonShared\CommonShared.projitems*{069fc77f-5ffd-4d50-bcbd-95b0d13a362d}*SharedItemsImports = 5
 		CommonShared\CommonShared.projitems*{10f0bc8d-1987-483c-a9df-b9e0faf174ad}*SharedItemsImports = 13
+		CommonShared\CommonShared.projitems*{c19f43c9-9557-424b-b9e7-50c21e1550ce}*SharedItemsImports = 5
 		CommonShared\CommonShared.projitems*{efa9fc3a-12cd-4e6c-8a77-201388921ad2}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +54,10 @@ Global
 		{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE0CD23E-2E65-4FF2-860E-E9047A7431E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C19F43C9-9557-424B-B9E7-50C21E1550CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19F43C9-9557-424B-B9E7-50C21E1550CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19F43C9-9557-424B-B9E7-50C21E1550CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19F43C9-9557-424B-B9E7-50C21E1550CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

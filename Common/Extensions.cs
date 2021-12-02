@@ -10,9 +10,9 @@ namespace Common
         public static bool WithinRange(this int number, int lower, int upper,
              bool includeLower = true, bool includeUpper = true)
         {
-            if(includeLower)
+            if (includeLower)
             {
-                if(!(lower <= number))
+                if (!(lower <= number))
                 {
                     return false;
                 }
@@ -22,14 +22,14 @@ namespace Common
                 return false;
             }
 
-            if(includeUpper)
+            if (includeUpper)
             {
-                if(!(number<=upper))
+                if (!(number <= upper))
                 {
                     return false;
                 }
             }
-            else if(!(number < upper))
+            else if (!(number < upper))
             {
                 return false;
             }
@@ -42,7 +42,7 @@ namespace Common
         {
             if (allowUppercase)
                 s = s.ToLowerInvariant();
-            return s.All( c => ('0' <= c && c <= '9') || ('a' <= c && c <= 'f') );
+            return s.All(c => ('0' <= c && c <= '9') || ('a' <= c && c <= 'f'));
         }
         public static int CountChar(this string s, char c)
         {
@@ -62,6 +62,21 @@ namespace Common
                     returnList.Add(inputSequence[i]);
                 }
                 yield return returnList;
+            }
+        }
+
+        public static IEnumerable<IEnumerable<T>> SlidingWindows<T>(this IReadOnlyList<T> inputSequence, int windowLenght)
+        {   
+            for (int i = 0; i <= inputSequence.Count - windowLenght; i++)
+            {
+                var window = new T[windowLenght];
+                int windowIndex = 0;
+                for (int j = i; j <= i + (windowLenght - 1); j++)
+                {
+                    window[windowIndex] = inputSequence[j];
+                    windowIndex++;
+                }
+                yield return window;
             }
         }
 
