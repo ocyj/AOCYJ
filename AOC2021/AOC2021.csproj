@@ -15,6 +15,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="input\input04.txt" />
+	  <None Remove="input\input05.txt" />
+	  <None Remove="input\input06.txt" />
+	  <None Remove="input\input07.txt" />
+	  <None Remove="input\input08.txt" />
+	  <None Remove="input\input09.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 

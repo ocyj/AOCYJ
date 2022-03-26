@@ -65,16 +65,15 @@ namespace Common
             }
         }
 
-        public static IEnumerable<IEnumerable<T>> SlidingWindows<T>(this IReadOnlyList<T> inputSequence, int windowLenght)
+        public static IEnumerable<IEnumerable<T>> SlidingWindows<T>(this IReadOnlyList<T> inputSequence, int windowLength)
         {   
-            for (int i = 0; i <= inputSequence.Count - windowLenght; i++)
+            for (int i = 0; i <= inputSequence.Count - windowLength; i++)
             {
-                var window = new T[windowLenght];
+                var window = new T[windowLength];
                 int windowIndex = 0;
-                for (int j = i; j <= i + (windowLenght - 1); j++)
+                for (int j = i; j <= i + (windowLength - 1); j++)
                 {
-                    window[windowIndex] = inputSequence[j];
-                    windowIndex++;
+                    window[windowIndex++] = inputSequence[j];
                 }
                 yield return window;
             }
@@ -90,5 +89,6 @@ namespace Common
                 }
             }
         }
+
     }
 }

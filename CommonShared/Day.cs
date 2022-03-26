@@ -33,12 +33,12 @@ namespace CommonShared
         }
 
         public bool UseTestInput { get; set; } = false; 
-        public string[] TestInput { private get; set; }
+        public string[]? TestInput { private get; set; }
         public abstract int Year { get; }
         public abstract int Date { get; }
         public abstract string Name { get; }
 
-        public Day()
+        protected Day()
         {
             // Do this once for entire assembly? Use line below to get all resource names
             //string[] names = assembly.GetManifestResourceNames();
