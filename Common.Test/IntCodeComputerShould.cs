@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Common;
+using System.Threading.Tasks;
 
 using NUnit.Framework;
 
@@ -19,7 +15,7 @@ namespace Common.Test
             var computer = new IntCodeComputer(memory);
 
             // Act
-            int[] memoryDump = computer.RunToCompletion();
+            int[] memoryDump = computer.RunToCompletion().Result;
 
             // Assert
             int[] expectedMemory = memory;
@@ -35,7 +31,7 @@ namespace Common.Test
             var computer = new IntCodeComputer(memory);
 
             // Act
-            int[] memoryDump = computer.RunToCompletion();
+            int[] memoryDump = computer.RunToCompletion().Result;
 
             // Assert
             int[] expectedMemory = (int[])memory.Clone();
@@ -50,7 +46,7 @@ namespace Common.Test
             var computer = new IntCodeComputer(memory);
 
             // Act
-            int[] memoryDump = computer.RunToCompletion();
+            int[] memoryDump = computer.RunToCompletion().Result;
 
             // Assert
             int[] expectedMemory = (int[])memory.Clone();
@@ -66,7 +62,7 @@ namespace Common.Test
             var computer = new IntCodeComputer(memory);
 
             // Act
-            int[] memoryDump = computer.RunToCompletion();
+            int[] memoryDump = computer.RunToCompletion().Result;
 
             // Assert
             Assert.That(memoryDump[7], Is.EqualTo(expectedResult));
@@ -78,11 +74,11 @@ namespace Common.Test
             // Arrange
             var computer = new IntCodeComputer(memory)
             {
-                ReadInput = () => input
+                ReadInput = () => Task.FromResult(input)
             };
 
             // Act
-            int[] memoryDump = computer.RunToCompletion();
+            int[] memoryDump = computer.RunToCompletion().Result;
 
             // Assert
             Assert.That(memoryDump[0], Is.EqualTo(input));
@@ -134,7 +130,7 @@ namespace Common.Test
             int actualOutput = int.MinValue;
             var computer = new IntCodeComputer(new[] { 3, 0, 4, 0, 99 })
             {
-                ReadInput = () => value,
+                ReadInput = () => Task.FromResult(value),
                 WriteOutput = i => actualOutput = i
             };
 
@@ -155,7 +151,7 @@ namespace Common.Test
             int actualOutput = int.MinValue;
             var computer = new IntCodeComputer(program)
             {
-                ReadInput = () => input,
+                ReadInput = () => Task.FromResult(input),
                 WriteOutput = v => actualOutput = v
             };
 
@@ -176,7 +172,7 @@ namespace Common.Test
             int actualOutput = int.MinValue;
             var computer = new IntCodeComputer(program)
             {
-                ReadInput = () => input,
+                ReadInput = () => Task.FromResult(input),
                 WriteOutput = v => actualOutput = v
             };
 
@@ -198,7 +194,7 @@ namespace Common.Test
             int actualOutput = int.MinValue;
             var computer = new IntCodeComputer(program)
             {
-                ReadInput = () => input,
+                ReadInput = () => Task.FromResult(input),
                 WriteOutput = v => actualOutput = v
             };
 
@@ -223,7 +219,7 @@ namespace Common.Test
             int actualOutput = int.MinValue;
             var computer = new IntCodeComputer(program)
             {
-                ReadInput = () => input,
+                ReadInput = () => Task.FromResult(input),
                 WriteOutput = v => actualOutput = v
             };
 
@@ -247,7 +243,7 @@ namespace Common.Test
             int actualOutput = int.MinValue;
             var computer = new IntCodeComputer(program)
             {
-                ReadInput = () => input,
+                ReadInput = () => Task.FromResult(input),
                 WriteOutput = v => actualOutput = v
             };
 
@@ -276,7 +272,7 @@ namespace Common.Test
             int actualOutput = int.MinValue;
             var computer = new IntCodeComputer(program)
             {
-                ReadInput = () => input,
+                ReadInput = () =>Task.FromResult(input),
                 WriteOutput = v => actualOutput = v
             };
 

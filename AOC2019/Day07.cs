@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using System.Collections.Generic;
+using Common;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,15 +11,12 @@ namespace AOC2019
 
         public override string Name => "Amplification Circuit";
 
-
-
         public override object SolvePart1()
         {
-            int[] program = Input[0].Split(',').Select(s => int.Parse(s)).ToArray();
+            int[] program = Input[0].Split(',').Select(int.Parse).ToArray();
 
             int maxOutput = int.MinValue;
-            int[] phaseSettingsMax = null;
-            foreach (var permutatation in (new int[] { 0, 1, 2, 3, 4 }).AllPermutations())
+            foreach (var permutation in (new[] { 0, 1, 2, 3, 4 }).AllPermutations())
             {
                 var computerA = new IntCodeComputer(program);
                 var computerB = new IntCodeComputer(program);
@@ -32,28 +30,28 @@ namespace AOC2019
                     if (first)
                     {
                         first = false;
-                        return Task.FromResult(permutatation[0]);
+                        return Task.FromResult(permutation[0]);
                     }
-                    else return Task.FromResult(0);
+                    return Task.FromResult(0);
                 };
 
-                var cnxAB = new Connection(permutatation[1]);
-                computerA.WriteOutput = cnxAB.WriteValue;
-                computerB.ReadInput = cnxAB.ReadValue;
+                var cnxAToB = new Connection(permutation[1]);
+                computerA.WriteOutput = cnxAToB.PutValue;
+                computerB.ReadInput = cnxAToB.PullValue;
 
-                var cnxBC = new Connection(permutatation[2]);
-                computerB.WriteOutput = cnxBC.WriteValue;
-                computerC.ReadInput = cnxBC.ReadValue;
+                var cnxBToC = new Connection(permutation[2]);
+                computerB.WriteOutput = cnxBToC.PutValue;
+                computerC.ReadInput = cnxBToC.PullValue;
 
-                var cnxCD = new Connection(permutatation[3]);
-                computerC.WriteOutput = cnxCD.WriteValue;
-                computerD.ReadInput = cnxCD.ReadValue;
+                var cnxCToD = new Connection(permutation[3]);
+                computerC.WriteOutput = cnxCToD.PutValue;
+                computerD.ReadInput = cnxCToD.PullValue;
 
-                var cnxDE = new Connection(permutatation[4]);
-                computerD.WriteOutput = cnxDE.WriteValue;
-                computerE.ReadInput = cnxDE.ReadValue;
+                var cnxDToE = new Connection(permutation[4]);
+                computerD.WriteOutput = cnxDToE.PutValue;
+                computerE.ReadInput = cnxDToE.PullValue;
 
-                int thrusterSignal = int.MinValue;
+                var thrusterSignal = int.MinValue;
                 computerE.WriteOutput = (output) => thrusterSignal = output;
 
                 var taskA = computerA.RunToCompletion();
@@ -67,7 +65,6 @@ namespace AOC2019
                 if (thrusterSignal > maxOutput)
                 {
                     maxOutput = thrusterSignal;
-                    phaseSettingsMax = permutatation;
                 }
             }
             return $"Maximum output was {maxOutput}";
@@ -75,59 +72,43 @@ namespace AOC2019
 
         public override object SolvePart2()
         {
-            UseTestInput = true;
-            TestInput = new[] { "3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5" };
-            int[] program = Input[0].Split(',').Select(s => int.Parse(s)).ToArray();
+            int[] program = Input[0].Split(',').Select(int.Parse).ToArray();
 
-            int maxOutput = int.MinValue;
-            int[] phaseSettingsMax = null;
-            foreach (var permutatation in (new int[] { 5, 6, 7, 8, 9 }).AllPermutations())
+            var maxOutput = int.MinValue;
+            foreach (int[] permutation in (new[] { 5, 6, 7, 8, 9 }).AllPermutations())
             {
-                var computerA = new IntCodeComputer(program);
-                var computerB = new IntCodeComputer(program);
-                var computerC = new IntCodeComputer(program);
-                var computerD = new IntCodeComputer(program);
-                var computerE = new IntCodeComputer(program);
+                var cnxAToB = new Connection(permutation[1]);
+                var cnxBToC = new Connection(permutation[2]);
+                var cnxCToD = new Connection(permutation[3]);
+                var cnxDToE = new Connection(permutation[4]);
+                var cnxEToA = new Connection(new[] { permutation[0], 0 });
 
-
-                var cnxAB = new Connection(permutatation[1]);
-                computerA.WriteOutput = cnxAB.WriteValue;
-                computerB.ReadInput = cnxAB.ReadValue;
-
-                var cnxBC = new Connection(permutatation[2]);
-                computerB.WriteOutput = cnxBC.WriteValue;
-                computerC.ReadInput = cnxBC.ReadValue;
-
-                var cnxCD = new Connection(permutatation[3]);
-                computerC.WriteOutput = cnxCD.WriteValue;
-                computerD.ReadInput = cnxCD.ReadValue;
-
-                var cnxDE = new Connection(permutatation[4]);
-                computerD.WriteOutput = cnxDE.WriteValue;
-                computerE.ReadInput = cnxDE.ReadValue;
-
-                var cnxEA = new Connection(permutatation[0]);
-
-                int compAReadNo = 0;
-                computerA.ReadInput = () =>
+                var computerA = new IntCodeComputer(program)
                 {
-                    if (compAReadNo++ == 0)
-                    {
-                        //return cnxEA.ReadValue();
-                        return Task.FromResult(0);
-                    }
-                    else if(compAReadNo++ == 1)
-                    {
-                        //return Task.FromResult(0);
-                        return cnxEA.ReadValue();
-                    }
-                    else
-                    {
-                        return cnxEA.ReadValue();
-                    }
-                };
+                    ReadInput = cnxEToA.PullValue,
+                    WriteOutput = cnxAToB.PutValue,
 
-                computerE.WriteOutput = cnxEA.WriteValue;
+                };
+                var computerB = new IntCodeComputer(program)
+                {
+                    ReadInput = cnxAToB.PullValue,
+                    WriteOutput = cnxBToC.PutValue
+                };
+                var computerC = new IntCodeComputer(program)
+                {
+                    ReadInput = cnxBToC.PullValue,
+                    WriteOutput = cnxCToD.PutValue
+                };
+                var computerD = new IntCodeComputer(program)
+                {
+                    ReadInput = cnxCToD.PullValue,
+                    WriteOutput = cnxDToE.PutValue
+                };
+                var computerE = new IntCodeComputer(program)
+                {
+                    ReadInput = cnxDToE.PullValue,
+                    WriteOutput = cnxEToA.PutValue
+                };
 
                 var taskA = computerA.RunToCompletion();
                 var taskB = computerB.RunToCompletion();
@@ -137,11 +118,10 @@ namespace AOC2019
 
                 Task.WhenAll(taskA, taskB, taskC, taskD, taskE);
 
-                int thrusterSignal = cnxEA.Value;
+                var thrusterSignal = cnxEToA.PullValue().Result;
                 if (thrusterSignal > maxOutput)
                 {
                     maxOutput = thrusterSignal;
-                    phaseSettingsMax = permutatation;
                 }
             }
             return $"Maximum output was {maxOutput}";
@@ -150,38 +130,43 @@ namespace AOC2019
 
     internal class Connection
     {
-        private readonly Task _setTask;
-        private int _firstInput;
-        private int _value;
-        private TaskCompletionSource setResultTcs;
-        private bool _firstInputDone = false;
+        private readonly Queue<int> _valueBuffer;
+        private TaskCompletionSource _ioOperationTaskCompletionSource;
 
-        public int Value => _value;
-
-        public Connection(int firstInput)
+        public Connection(int initialValue) : this(new [] {initialValue}) { }
+        public Connection(IEnumerable<int> initialValues)
         {
-            setResultTcs = new TaskCompletionSource();
-            _setTask = setResultTcs.Task;
-            _firstInput = firstInput;
-
-        }
-
-        public void WriteValue(int value)
-        {
-            _value = value;
-            setResultTcs.SetResult();
-        }
-
-        public async Task<int> ReadValue()
-        {
-            if (!_firstInputDone)
+            _valueBuffer = new();
+            foreach (var value in initialValues)
             {
-                _firstInputDone = true;
-                return _firstInput;
+                _valueBuffer.Enqueue(value);
             }
 
-            await _setTask;
-            return _value;
+            if (!_valueBuffer.Any())
+            {
+                _ioOperationTaskCompletionSource = new();
+            }
+        }
+
+        public void PutValue(int value)
+        {
+            _valueBuffer.Enqueue(value);
+            _ioOperationTaskCompletionSource?.SetResult();
+        }
+
+        public async Task<int> PullValue()
+        {
+            if (_ioOperationTaskCompletionSource != null)
+            {
+                await _ioOperationTaskCompletionSource.Task;
+            }
+
+            var value = _valueBuffer.Dequeue();
+            if (!_valueBuffer.Any())
+            {
+                _ioOperationTaskCompletionSource = new();
+            }
+            return value;
         }
     }
 }
