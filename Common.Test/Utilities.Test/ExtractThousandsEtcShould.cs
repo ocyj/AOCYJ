@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AdventOfCodeRunner.Common;
 using Common;
 
 namespace Common.Test.Utilities.Test

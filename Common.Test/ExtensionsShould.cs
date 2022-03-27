@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Common;
-
+using AdventOfCodeRunner.Common;
 using NUnit.Framework;
 
 namespace Common.Test

@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-
+using AdventOfCodeRunner.AOC2019.D05;
 using NUnit.Framework;
 
 namespace Common.Test
@@ -95,7 +95,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
@@ -113,7 +113,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
@@ -135,7 +135,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(value, Is.EqualTo(actualOutput));
@@ -156,7 +156,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
@@ -177,7 +177,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
@@ -199,7 +199,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
@@ -224,7 +224,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
@@ -248,7 +248,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
@@ -277,7 +277,7 @@ namespace Common.Test
             };
 
             // Act
-            computer.RunToCompletion();
+            computer.RunToCompletion().Wait();
 
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));

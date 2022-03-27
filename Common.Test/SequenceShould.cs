@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using AdventOfCodeRunner.Common;
 using NUnit.Framework;
-using Common;
 
 namespace Common.Test
 {
