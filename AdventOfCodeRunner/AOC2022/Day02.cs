@@ -22,13 +22,7 @@ internal class Day02 : Day
         { 8, 2, 5 }
     };
 
-    public Day02(string[] input) : base(input)
-    {
-        TestInput = @"A Y
-B X
-C Z".Split(Environment.NewLine);
-
-    }
+    public Day02(string[] input) : base(input) { }
     public override string Name => "Rock Paper Scissors";
     public override object SolvePart1() => Input.Sum(l => _outcomes[GetMoveIndex(l[^1]), GetMoveIndex(l[0])]);
 
