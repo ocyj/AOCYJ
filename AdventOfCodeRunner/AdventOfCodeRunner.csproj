@@ -6,57 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AOC2019\input\input01.txt" />
-    <None Remove="AOC2019\input\input02.txt" />
-    <None Remove="AOC2019\input\input03.txt" />
-    <None Remove="AOC2019\input\input04.txt" />
-    <None Remove="AOC2019\input\input05.txt" />
-    <None Remove="AOC2019\input\input06.txt" />
-    <None Remove="AOC2019\input\input07.txt" />
-    <None Remove="AOC2020\input\input01.txt" />
-    <None Remove="AOC2020\input\input02.txt" />
-    <None Remove="AOC2020\input\input03.txt" />
-    <None Remove="AOC2020\input\input04.txt" />
-    <None Remove="AOC2020\input\input05.txt" />
-    <None Remove="AOC2020\input\input06.txt" />
-    <None Remove="AOC2020\input\input08.txt" />
-    <None Remove="AOC2020\input\input09.txt" />
-    <None Remove="AOC2021\input\input01.txt" />
-    <None Remove="AOC2021\input\input02.txt" />
-    <None Remove="AOC2021\input\input03.txt" />
-    <None Remove="AOC2021\input\input04.txt" />
-    <None Remove="AOC2021\input\input05.txt" />
-    <None Remove="AOC2021\input\input06.txt" />
-    <None Remove="AOC2021\input\input07.txt" />
-    <None Remove="AOC2021\input\input08.txt" />
-    <None Remove="AOC2021\input\input09.txt" />
+	  <EmbeddedResource Include="AOC20*\input\input*.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="AOC2019\input\input01.txt" />
-    <EmbeddedResource Include="AOC2019\input\input02.txt" />
-    <EmbeddedResource Include="AOC2019\input\input03.txt" />
-    <EmbeddedResource Include="AOC2019\input\input04.txt" />
-    <EmbeddedResource Include="AOC2019\input\input05.txt" />
-    <EmbeddedResource Include="AOC2019\input\input06.txt" />
-    <EmbeddedResource Include="AOC2019\input\input07.txt" />
-    <EmbeddedResource Include="AOC2020\input\input01.txt" />
-    <EmbeddedResource Include="AOC2020\input\input02.txt" />
-    <EmbeddedResource Include="AOC2020\input\input03.txt" />
-    <EmbeddedResource Include="AOC2020\input\input04.txt" />
-    <EmbeddedResource Include="AOC2020\input\input05.txt" />
-    <EmbeddedResource Include="AOC2020\input\input06.txt" />
-    <EmbeddedResource Include="AOC2020\input\input08.txt" />
-    <EmbeddedResource Include="AOC2020\input\input09.txt" />
-    <EmbeddedResource Include="AOC2021\input\input01.txt" />
-    <EmbeddedResource Include="AOC2021\input\input02.txt" />
-    <EmbeddedResource Include="AOC2021\input\input03.txt" />
-    <EmbeddedResource Include="AOC2021\input\input04.txt" />
-    <EmbeddedResource Include="AOC2021\input\input05.txt" />
-    <EmbeddedResource Include="AOC2021\input\input06.txt" />
-    <EmbeddedResource Include="AOC2021\input\input07.txt" />
-    <EmbeddedResource Include="AOC2021\input\input08.txt" />
-    <EmbeddedResource Include="AOC2021\input\input09.txt" />
+    <None Remove="AOC2022\input\input02.txt" />
   </ItemGroup>
 
   <ItemGroup>

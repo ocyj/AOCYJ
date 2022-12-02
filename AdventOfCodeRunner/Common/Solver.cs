@@ -1,12 +1,20 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 
 namespace AdventOfCodeRunner.Common
 {
     public static class Solver
     {
-        public static void Solve(Day day, AdventOfCodeAttribute adventOfCodeAttribute)
+        public static void Solve(Day day)
         {
-            Console.WriteLine($" Day {adventOfCodeAttribute.Day:D2} of {adventOfCodeAttribute.Year:D4} - {day.Name.ToUpper()} ");
+            var aocAttribute = day.GetType().GetCustomAttributes(typeof(AdventOfCodeAttribute)).FirstOrDefault() as AdventOfCodeAttribute;
+            if (aocAttribute == null)
+            {
+                throw new ArgumentException(
+                    $"Cannot solve on day type without {nameof(AdventOfCodeAttribute)} attribute set");
+            }
+            Console.WriteLine($" Day {aocAttribute.Day:D2} of {aocAttribute.Year:D4} - {day.Name.ToUpper()} ");
             Console.WriteLine();
 
             Console.Write($"\tPart 1 answer:");
