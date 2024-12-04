@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
+using AdventOfCodeFSharp.AOC2024;
 using AdventOfCodeRunner.Common;
 
 namespace AdventOfCodeRunner
@@ -12,8 +12,7 @@ namespace AdventOfCodeRunner
         private static void Main(string[] args)
         {
             Console.WriteLine("Running AdventOfCodeRunner");
-            AdventOfCodeFSharp.AOC2024.Day01.solvePart01("input/2024-01.txt");
-            AdventOfCodeFSharp.AOC2024.Day01.solvePart02("input/2024-01.txt");
+            AdventOfCodeFSharp.Common.runSolver(Day01.solver);
             Console.WriteLine("Bye");
             return;
 
