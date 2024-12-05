@@ -8,6 +8,7 @@
     <ItemGroup>
       <Compile Include="Common.fs" />
       <Compile Include="AOC2024\Day01.fs" />
+      <Compile Include="AOC2024\Day02.fs" />
     </ItemGroup>
 
 </Project>

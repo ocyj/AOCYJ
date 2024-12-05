@@ -12,7 +12,9 @@ namespace AdventOfCodeRunner
         private static void Main(string[] args)
         {
             Console.WriteLine("Running AdventOfCodeRunner");
-            AdventOfCodeFSharp.Common.runSolver(Day01.solver);
+            //AdventOfCodeFSharp.Common.runSolver(Day01.solver);
+            var isSafe = Day02.isSafeIncreasing(Day02.report);
+            Console.WriteLine("Day 2 report is: " + isSafe);
             Console.WriteLine("Bye");
             return;
 
